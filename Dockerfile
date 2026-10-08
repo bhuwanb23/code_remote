@@ -2,18 +2,17 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt-get update && apt-get install -y \
     curl \
     wget \
     git \
-    vim \
-    nano \
-    unzip
-
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs
+    nodejs \
+    npm
 
 RUN npm install -g opencode-ai@latest
 
-CMD ["sleep", "infinity"]
+RUN apt-get install -y ttyd
+
+EXPOSE 10000
+
+CMD ttyd --writable -p ${PORT:-10000} bash
