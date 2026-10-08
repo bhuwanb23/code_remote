@@ -1,8 +1,7 @@
 #!/bin/bash
 
-PORT=${PORT:-10000}
+export OPENCODE_SERVER_PASSWORD=mypassword
 
-exec ttyd \
-  --writable \
-  -p $PORT \
-  bash
+exec opencode serve \
+  --hostname 0.0.0.0 \
+  --port ${PORT:-10000}

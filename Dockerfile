@@ -15,4 +15,4 @@ RUN apt-get install -y ttyd
 
 EXPOSE 10000
 
-CMD ttyd --writable -p ${PORT:-10000} bash
+CMD ["/start.sh"]
