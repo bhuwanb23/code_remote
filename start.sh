@@ -1,6 +1,9 @@
 #!/bin/bash
 
-export OPENCODE_SERVER_PASSWORD=mypassword
+echo "Starting OpenCode..."
+echo "PORT=$PORT"
+
+export OPENCODE_SERVER_PASSWORD=test123
 
 exec opencode serve \
   --hostname 0.0.0.0 \
