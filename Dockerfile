@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get install -y nodejs
 
 # Install OpenCode during build
-RUN npm install -g opencode
+RUN npm install -g opencode-ai@latest
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
