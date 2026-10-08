@@ -3,22 +3,11 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y \
-    curl \
-    wget \
-    git \
-    unzip \
-    build-essential \
-    nodejs \
-    npm \
-    openssh-server \
-    && rm -rf /var/lib/apt/lists/*
+    apt-get install -y curl wget git
 
-# Install ttyd (Web Terminal)
-RUN wget -O /tmp/ttyd.tar.gz https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64
-RUN chmod +x /tmp/ttyd.tar.gz && mv /tmp/ttyd.tar.gz /usr/local/bin/ttyd
-
-WORKDIR /workspace
+RUN wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 \
+    -O /usr/local/bin/ttyd && \
+    chmod +x /usr/local/bin/ttyd
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh

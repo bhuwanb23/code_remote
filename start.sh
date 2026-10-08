@@ -2,4 +2,7 @@
 
 PORT=${PORT:-10000}
 
-ttyd -p $PORT bash
+exec ttyd \
+  --writable \
+  -p $PORT \
+  bash
