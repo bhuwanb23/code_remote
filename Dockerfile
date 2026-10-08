@@ -1,8 +1,9 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc
+FROM kasmweb/core-ubuntu-focal:1.16.0
 
 USER root
 
-RUN apt-get update && \
+RUN rm -f /etc/apt/sources.list.d/google-chrome.list || true && \
+    apt-get update && \
     apt-get install -y wget curl git
 
 # Download OpenCode desktop
