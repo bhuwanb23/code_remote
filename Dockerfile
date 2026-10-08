@@ -3,11 +3,12 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y curl wget git
+    apt-get install -y curl wget git && \
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs
 
-RUN wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 \
-    -O /usr/local/bin/ttyd && \
-    chmod +x /usr/local/bin/ttyd
+# Install OpenCode during build
+RUN npm install -g opencode
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
