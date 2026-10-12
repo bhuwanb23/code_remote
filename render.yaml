@@ -1,0 +1,22 @@
+
+services:
+  - type: web
+    name: opencode-render-agent
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm install --global opencode-ai
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: AGENT_API_TOKEN
+        generateValue: true
+      - key: REPO_URL
+        sync: false
+      - key: REPO_BRANCH
+        value: main
+      - key: OPENCODE_ZEN_API_KEY
+        sync: false
+      - key: OPENCODE_MODEL
+        value: opencode/big-pickle
