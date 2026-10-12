@@ -3,7 +3,7 @@
 echo "Starting OpenCode..."
 echo "PORT=$PORT"
 
-export OPENCODE_SERVER_PASSWORD=test123
+unset OPENCODE_SERVER_PASSWORD
 
 exec opencode serve \
   --hostname 0.0.0.0 \
